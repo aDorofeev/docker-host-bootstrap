@@ -35,7 +35,8 @@ if [ $(cat ~user/.ssh/authorized_keys | grep "$SSH_KEYS" | wc -l) -eq 0 ] ; then
     chmod 600 ~user/.ssh/authorized_keys
     chown user. ~user/.ssh/authorized_keys
 fi
-PRIVATE_SSH_KEY_FILE="~user/.ssh/id_rsa"
+USER_HOME=$(eval echo "~user")
+PRIVATE_SSH_KEY_FILE="$USER_HOME/.ssh/id_rsa"
 if [ ! -f "$PRIVATE_SSH_KEY_FILE" ] ; then
     su - user -c 'ssh github.com -o "StrictHostKeyChecking no" || true'
     su - user -c "ssh-keygen -t rsa -N '' -f $PRIVATE_SSH_KEY_FILE"
