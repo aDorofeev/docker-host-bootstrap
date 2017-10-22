@@ -21,6 +21,8 @@ apt-get update
 
 apt-get install -y docker-ce=17.03.0~ce-0~debian-stretch
 
+apt-mark hold docker-ce
+
 usermod -aG docker user
 
 curl -L https://github.com/docker/compose/releases/download/1.15.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
