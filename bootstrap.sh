@@ -46,6 +46,7 @@ fi
 if [[ ! -f ~user/.ssh/authorized_keys ]] ; then
     su - user -c 'ssh github.com -o "StrictHostKeyChecking no" || true'
     touch ~user/.ssh/authorized_keys
+    chown user. ~user/.ssh/authorized_keys
     chmod 600 ~user/.ssh/authorized_keys
 fi
 add_ssh_keys "$(cat ~/.ssh/authorized_keys)" ~user/.ssh/authorized_keys
