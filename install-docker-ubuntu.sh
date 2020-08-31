@@ -7,7 +7,8 @@ apt-get install -y \
      apt-transport-https \
      ca-certificates \
      curl \
-     software-properties-common
+     software-properties-common \
+     gpg-agent
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
