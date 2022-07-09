@@ -7,7 +7,7 @@ set -o pipefail
 
 OS_NAME=$(cat /etc/os-release | grep -oP '(?<=^ID=).+')
 
-if [ "${OS_NAME}" = "ubuntu1" ]; then
+if [ "${OS_NAME}" = "ubuntu" ]; then
     apt-get install -y \
          apt-transport-https \
          ca-certificates \
