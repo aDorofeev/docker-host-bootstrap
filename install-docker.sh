@@ -24,8 +24,6 @@ elif [ "${OS_NAME}" = "debian" ]; then
 else
     >&2 echo "OS not supported: ${OS_NAME}"
 fi
-exit
-
 
 curl -fsSL https://download.docker.com/linux/${OS_NAME}/gpg | apt-key add -
 
