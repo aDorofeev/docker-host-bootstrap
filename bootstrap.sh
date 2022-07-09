@@ -59,8 +59,12 @@ fi
 # install
 apt update
 apt install -y \
-    vim \
+    neovim \
     tmux \
+    jq \
+    ncdu \
+    mtr \
     man \
     htop \
     bash-completion
+
