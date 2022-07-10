@@ -34,7 +34,7 @@ add-apt-repository \
 
 apt-get update
 
-LATEST_DOCKER=$(apt-cache madison docker-ce | sort -r | head -n 1 | awk '{print $3}')
+LATEST_DOCKER=$(apt-cache madison docker-ce | head -n 1 | awk '{print $3}')
 
 apt-get install -y docker-ce="${LATEST_DOCKER}"
 
