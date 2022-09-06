@@ -65,6 +65,10 @@ apt install -y \
     ncdu \
     mtr \
     man \
+    tldr \
     htop \
+    time \
+    bc \
+    datamash \
     bash-completion
 
