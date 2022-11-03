@@ -61,7 +61,7 @@ cat << EOF > /etc/sysctl.d/oom_reboot.conf
 # panic kernel on OOM
 vm.panic_on_oom=1
 # reboot after 10 sec on panic
-kernel.panic=10"
+kernel.panic=10
 
 EOF
 sysctl -p /etc/sysctl.d/oom_reboot.conf
