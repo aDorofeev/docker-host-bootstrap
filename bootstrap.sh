@@ -56,6 +56,16 @@ if [[ ! -f "${PRIVATE_SSH_KEY_FILE}" ]] ; then
     su - user -c "ssh-keygen -t rsa -N '' -f ${PRIVATE_SSH_KEY_FILE}"
 fi
 
+# set up reboot on oom
+cat << EOF > /etc/sysctl.d/oom_reboot.conf
+# panic kernel on OOM
+vm.panic_on_oom=1
+# reboot after 10 sec on panic
+kernel.panic=10"
+
+EOF
+sysctl -p /etc/sysctl.d/oom_reboot.conf
+
 # install
 apt update
 apt install -y \
