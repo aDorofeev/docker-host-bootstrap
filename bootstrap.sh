@@ -69,6 +69,7 @@ sysctl -p /etc/sysctl.d/oom_reboot.conf
 # install
 apt update
 apt install -y \
+    mosh \
     neovim \
     tmux \
     jq \
