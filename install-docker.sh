@@ -41,7 +41,7 @@ apt-get update
 if [[ -d /etc/docker ]]; then
     echo '{
       "live-restore": true
-    }' > /etc/docker/daemon.json
+}' > /etc/docker/daemon.json
     systemctl reload docker
 fi
 
@@ -64,9 +64,10 @@ mv /usr/local/bin/docker-compose.tmp /usr/local/bin/docker-compose
 
 # Enable live restore if not yet enabled
 if [[ ! -f /etc/docker/daemon.json ]]; then
+    mkdir -p /etc/docker
     echo '{
       "live-restore": true
-    }' > /etc/docker/daemon.json
+}' > /etc/docker/daemon.json
     
     systemctl reload docker
 fi
