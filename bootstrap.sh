@@ -30,7 +30,7 @@ fi
 add_ssh_keys "${SSH_KEYS}"
 
 # generate local ssh key for root
-PRIVATE_SSH_KEY_FILE="$HOME/.ssh/id_rsa"
+PRIVATE_SSH_KEY_FILE="/root/.ssh/id_rsa"
 if [[ ! -f "$PRIVATE_SSH_KEY_FILE" ]] ; then
     ssh-keygen -t rsa -N '' -f "$PRIVATE_SSH_KEY_FILE"
 fi
