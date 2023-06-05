@@ -4,6 +4,8 @@ set -o nounset
 set -o errexit
 set -o pipefail
 
+USERNAME=${1:-user}
+
 OS_NAME=$(cat /etc/os-release | grep -oP '(?<=^ID=).+')
 
 if [ "${OS_NAME}" = "ubuntu" ]; then
@@ -50,8 +52,8 @@ fi
 #apt-mark hold docker-ce
 
 apt-get install -y docker-ce
-if id -u user 2>/dev/null; then
-    usermod -aG docker user
+if id -u ${USERNAME} 2>/dev/null; then
+    usermod -aG docker ${USERNAME}
 fi
 
 COMPOSE_RELEASE_NAME="docker-compose-`uname -s  | tr '[:upper:]' '[:lower:]'`-`uname -m`"
