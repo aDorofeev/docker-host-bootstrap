@@ -53,7 +53,7 @@ if [[ ! -f ~${USERNAME}/.ssh/authorized_keys ]] ; then
 fi
 add_ssh_keys "$(cat ~/.ssh/authorized_keys)" ~${USERNAME}/.ssh/authorized_keys
 
-PRIVATE_SSH_KEY_FILE=$(readlink -f ~${USERNAME}/.ssh/id_rsa)
+PRIVATE_SSH_KEY_FILE="$(eval echo ~${USERNAME})/.ssh/id_rsa"
 if [[ ! -f "${PRIVATE_SSH_KEY_FILE}" ]] ; then
     su - ${USERNAME} -c "ssh-keygen -t rsa -N '' -f ${PRIVATE_SSH_KEY_FILE}"
 fi
