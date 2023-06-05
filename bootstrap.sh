@@ -51,7 +51,7 @@ if [[ ! -f ~${USERNAME}/.ssh/authorized_keys ]] ; then
     chown ${USERNAME}. ~${USERNAME}/.ssh/authorized_keys && \
     chmod 600 ~${USERNAME}/.ssh/authorized_keys"
 fi
-add_ssh_keys "$(cat ~/.ssh/authorized_keys)" ~user/.ssh/authorized_keys
+add_ssh_keys "$(cat ~/.ssh/authorized_keys)" ~${USERNAME}/.ssh/authorized_keys
 
 PRIVATE_SSH_KEY_FILE=$(readlink -f ~${USERNAME}/.ssh/id_rsa)
 if [[ ! -f "${PRIVATE_SSH_KEY_FILE}" ]] ; then
