@@ -56,14 +56,6 @@ if id -u ${USERNAME} 2>/dev/null; then
     usermod -aG docker ${USERNAME}
 fi
 
-COMPOSE_RELEASE_NAME="docker-compose-`uname -s  | tr '[:upper:]' '[:lower:]'`-`uname -m`"
-
-COMPOSE_DL_URL=$(curl -f -s https://api.github.com/repos/docker/compose/releases/latest | jq -r '.assets[]|select(.name=="'"${COMPOSE_RELEASE_NAME}"'").browser_download_url')
-curl -sL ${COMPOSE_DL_URL} > /usr/local/bin/docker-compose.tmp
-chmod +x /usr/local/bin/docker-compose.tmp
-mv /usr/local/bin/docker-compose.tmp /usr/local/bin/docker-compose
-#sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
-
 # Enable live restore if not yet enabled
 if [[ ! -f /etc/docker/daemon.json ]]; then
     mkdir -p /etc/docker
