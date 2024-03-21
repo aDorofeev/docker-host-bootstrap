@@ -82,6 +82,7 @@ apt install -y \
     htop \
     time \
     bc \
+    pv \
     datamash \
     bash-completion
 
