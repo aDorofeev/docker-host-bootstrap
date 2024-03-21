@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-set -o nounset
-set -o errexit
+set -euo pipefail
 
 NEWNAME=$1
 OLDNAME=${2:-}

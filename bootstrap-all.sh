@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-set -o nounset
-set -o errexit
+set -euo pipefail
 
 SCRIPT_PATH=$(readlink -f $0)
 SCRIPT_DIR=$(dirname ${SCRIPT_PATH})
