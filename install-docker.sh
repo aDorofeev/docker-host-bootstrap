@@ -39,13 +39,13 @@ add-apt-repository --yes \
 
 apt-get update
 
-# If docker is already installed - enable live-restore prior to updating it
-if [[ -d /etc/docker ]]; then
-    echo '{
-      "live-restore": true
-}' > /etc/docker/daemon.json
-    systemctl reload docker
-fi
+# do not enable live-restore, since it may cause issues
+# if [[ -d /etc/docker ]]; then
+#     echo '{
+#       "live-restore": true
+# }' > /etc/docker/daemon.json
+#     systemctl reload docker
+# fi
 
 #LATEST_DOCKER=$(apt-cache madison docker-ce | head -n 1 | awk '{print $3}')
 #apt-get install -y docker-ce="${LATEST_DOCKER}"
