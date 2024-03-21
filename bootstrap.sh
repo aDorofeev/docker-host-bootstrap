@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-set -o nounset
-set -o errexit
+set -euo pipefail
 
 USERNAME=${1:-user}
 
-SSH_KEYS="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/6CW7KXHRJzpHB1dH5oioyNgfiAQEgldYtl4WKQjSWzodz0kBAmA/R3vV4S2cwt52V1FwlBtZdZCQT8ffUiB/lkawp/D0gHlYwFQCR/hI0yb8t4MktaP4YsyGrLLyQRxBQsClenzxW7v69P5Gargd4WygxdAAibbizg2V1vlIp3NRqchA0/lXh7eknHY3LMUtTc2UYkRTfKmyWpHnYZs6rPtSoL02uKrJvi9Un2kkW3mRqxtHXUlrl7gf5YexzLBUHnxLtiJTb97ZPxXHftcwscjyKmopNUSwMRqBCvUK57bM2jLL6gzxLumZ1zZZxi21/88UI9DaLXZgm5vmJT1p anton@dell500"
+SSH_KEYS="${SSH_KEYS:-}"
 
 function add_ssh_keys() {
     AUTHORIZED_KEYS_PATH=${2:-}
@@ -29,7 +28,9 @@ if [[ ! -f ~/.ssh/authorized_keys ]] ; then
     touch ~/.ssh/authorized_keys
     chmod 600 ~/.ssh/authorized_keys
 fi
-add_ssh_keys "${SSH_KEYS}"
+if [ "${SSH_KEYS}" != "" ]; then
+    add_ssh_keys "${SSH_KEYS}"
+fi
 
 # generate local ssh key for root
 PRIVATE_SSH_KEY_FILE="/root/.ssh/id_rsa"
